@@ -58,11 +58,40 @@ Here are the first 5 rows of the cleaned dataframe (I only picked the most relev
 
 # Univariate Analysis
 
-Embed at least one plotly plot you created in your notebook that displays the distribution of a single column (see Part 2: Report for instructions). For each plot that you embed, include a 1-2 sentence explanation about your plot, making sure to describe and interpret any trends present.
-
 <iframe
   src="assets/avg-rating-distribution.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+I wanted to explore the distribution of average_ratings within the dataframe to get a better sense of the range of values. As we can see above, the graph is left-skewed with a high concentration of values around the 4-5 average_rating range. There are very few values in the 1-3 range, which is somewhat surprising because it highlights a possible tendency for users to overrate recipes higher than they maybe should be.
+
+# Bivariate Analysis
+
+<iframe
+  src="assets/n-ingredients-vs-calories.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Additionally, I was interested in exploring the relationship between the number of ingredients vs the number of calories. Maybe certain recipes have only a small subset of ingredients that lead to a higher calorie total and maybe other healthy recipes use several ingredients that each have lower calorie counts. However, I assumed there would be a positive relationship between the two, as more ingredients typically tend to add up to more calories and indeed there was. The bright linear area in the graph highlights the positive correlation between the two features.
+
+# Interesting Aggregates
+
+| is_healthy   |   calories |   total_fat (PDV) |   sugar (PDV) |   sodium (PDV) |   protein (PDV) |   saturated_fat (PDV) |   carbohydrates (PDV) |
+|:-------------|-----------:|------------------:|--------------:|---------------:|----------------:|----------------------:|----------------------:|
+| True         |    355.049 |           11.392  |       90.698  |        30.3171 |         26.5765 |               11.9766 |               18.8234 |
+| False        |    444.603 |           36.7871 |       64.3458 |        28.6721 |         34.4185 |               45.7847 |               12.7996 |
+
+Now one of my favorite tables is the grouped one above, as it highlights the differences in nutrional makeups between recipes with the is_healthy tag and recipes without the tag. I like this one because it allows for direct comparison between the two groups in terms of nutrional content and shows some variety in the numbers. For example, the is_healthy tagged recipes were higher in sugar (PDV) content, which was surprising to me. 
+
+<iframe
+  src="assets/healthy-vs-non-healthy.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This chart provides a visual of that previous table (removed calories from the visual because their scale would have made it harder to see the other features). The sugar difference is very clear in the chart, as well as differences in total_fat (PDV) and saturated_fat (PDV).
