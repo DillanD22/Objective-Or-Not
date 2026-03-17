@@ -1,10 +1,10 @@
-# Recipe Ratings and Nutritional Content Analysis
+# Objective Or Not: What Influences Recipe Ratings?
 
 Author: Dillan Desai
 
 # Overview
 
-This analysis was done using a dataset of over 83,000 recipe ratings as part of a project for the course: Data Science 80 at University of California San Diego. Recipes tagged as healthy by raters were compared to ratings without healthy tags, in order to better explore differences in their nutrional makeups and how they may influence user ratings. The main focus was on using the nutritional features (calories, sugar (PDV), protein (PDV), etc.) and structural features (minutes - recipe timing, n_steps - number of steps in recipes, n_ingredients - number of ingredients in recipe) try to predict the target variable,  average_ratings of recipes. 
+This analysis was done using a dataset of over 83,000 recipe ratings as part of a project for the course: Data Science 80 at University of California San Diego. Recipes tagged as healthy by raters were compared to ratings without healthy tags, in order to better explore differences in their nutrional makeups and how they may influence user ratings. The main focus was on using the nutritional features (calories, sugar (PDV), protein (PDV), etc.) and structural features (minutes - recipe timing, n_steps - number of steps in recipes, n_ingredients - number of ingredients in recipe) to try to predict the target variable,  average_ratings of recipes. 
 
 # Introduction
 
@@ -62,8 +62,8 @@ I wanted to explore the distribution of average_ratings within the dataframe to 
 
 <iframe
   src="assets/avg-rating-distribution.html"
-  width="800"
-  height="400"
+  width="700"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -94,7 +94,7 @@ This chart provides a visual of that previous table (removed calories from the v
 <iframe
   src="assets/healthy-vs-non-healthy.html"
   width="650"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -120,7 +120,7 @@ Furthermore, I wanted to check the missingness of the `average_rating` column wi
 <iframe
   src="assets/minutes-vs-average-rating-missingness.html"
   width="650"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -138,7 +138,7 @@ The same type of permutation test with 1000 repetitions was also done with the `
 <iframe
   src="assets/sodium-vs-average-rating-missingness.html"
   width="650"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -160,7 +160,7 @@ Similar to my earlier missingness tests, the permutation test was done with 1000
 <iframe
   src="assets/difference-mean-average-rating-between-tags.html"
   width="650"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -219,7 +219,7 @@ As part of my fairness analysis, I want to finish up my comparison between the g
 <iframe
   src="assets/difference-rmse-between-tags.html"
   width="650"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
