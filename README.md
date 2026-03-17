@@ -81,7 +81,7 @@ Additionally, I was interested in exploring the relationship between the number 
 
 ## Interesting Aggregates
 
-Now one of my favorite tables is the grouped one below, as it highlights the differences in nutrional makeups between recipes with the `is_healthy` tag and recipes without the tag. I like this one because it allows for direct comparison between the two groups in terms of nutrional content and shows some variety in the numbers. For example, the is_healthy tagged recipes were higher in `sugar (PDV)` content, which was surprising to me. 
+Now one of my favorite tables is the grouped one below, as it highlights the differences in nutritonal makeups between recipes with the `is_healthy` tag and recipes without the tag. I like this one because it allows for direct comparison between the two groups in terms of nutrional content and shows some variety in the numbers. For example, the is_healthy tagged recipes were higher in `sugar (PDV)` content, which was surprising to me. 
 
 
 | is_healthy   |   calories |   total_fat (PDV) |   sugar (PDV) |   sodium (PDV) |   protein (PDV) |   saturated_fat (PDV) |   carbohydrates (PDV) |
@@ -93,7 +93,7 @@ This chart provides a visual of that previous table (removed calories from the v
 
 <iframe
   src="assets/healthy-vs-non-healthy.html"
-  width="800"
+  width="500"
   height="400"
   frameborder="0"
 ></iframe>
@@ -108,8 +108,6 @@ I do believe that the `description` column in the dataset is MNAR (Missing Not A
 
 ## Missingness Dependency
 
-Present and interpret the results of your missingness permutation tests with respect to your data and question. Embed a plotly plot related to your missingness exploration.
-
 Furthermore, I wanted to check the missingness of the `average_rating` column with a column that may be able to explain its non-trivial missingness, the `minutes`. I chose to explore the dependence of the `average_rating` column on `minutes` because maybe longer recipes have been tried less by users, hence resulting in the fewer ratings and a lack of an average rating.
 
 - Null hypothesis: The missingness of average_rating does not depend on minutes
@@ -120,7 +118,7 @@ Furthermore, I wanted to check the missingness of the `average_rating` column wi
 - Test statistic: The absolute difference of mean in mean minutes of the group with  missing ratings and the group without missing ratings.
 
 <iframe
-  src="minutes-vs-average-rating-missingness.html"
+  src="assets/minutes-vs-average-rating-missingness.html"
   width="800"
   height="400"
   frameborder="0"
@@ -138,10 +136,13 @@ The same type of permutation test with 1000 repetitions was also done with the `
 - Test statistic: The absolute difference of mean in mean sodium (PDV) of the group with  missing ratings and the group without missing ratings.
 
 <iframe
-  src="sodium-vs-average-rating-missingness.html"
+  src="assets/sodium-vs-average-rating-missingness.html"
   width="800"
   height="400"
   frameborder="0"
 ></iframe>
 
 The p-value was 0.863, with an observed difference of 0.35 percent. Since the p-value of 0.863 is much greater than 0.05, I failed to reject the null hypothesis at the 0.05 significance level. This suggests that the missingness of the `average_rating` column is likely not dependent on the `sodium (PDV)` column.
+
+# Hypothesis Testing
+
