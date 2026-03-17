@@ -93,7 +93,7 @@ This chart provides a visual of that previous table (removed calories from the v
 
 <iframe
   src="assets/healthy-vs-non-healthy.html"
-  width="500"
+  width="600"
   height="400"
   frameborder="0"
 ></iframe>
@@ -119,7 +119,7 @@ Furthermore, I wanted to check the missingness of the `average_rating` column wi
 
 <iframe
   src="assets/minutes-vs-average-rating-missingness.html"
-  width="800"
+  width="600"
   height="400"
   frameborder="0"
 ></iframe>
@@ -137,7 +137,7 @@ The same type of permutation test with 1000 repetitions was also done with the `
 
 <iframe
   src="assets/sodium-vs-average-rating-missingness.html"
-  width="800"
+  width="600"
   height="400"
   frameborder="0"
 ></iframe>
@@ -145,4 +145,28 @@ The same type of permutation test with 1000 repetitions was also done with the `
 The p-value was 0.863, with an observed difference of 0.35 percent. Since the p-value of 0.863 is much greater than 0.05, I failed to reject the null hypothesis at the 0.05 significance level. This suggests that the missingness of the `average_rating` column is likely not dependent on the `sodium (PDV)` column.
 
 # Hypothesis Testing
+
+Back to exploring the differences in the healthy-tagged group and the group without healthy tags, I conducted a permutation test to discover if recipes with the healthy tag have the same average rating as recipes without the healthy tag. Essentially, do people rate recipes as higher because they are healthier or does that not really matter?
+
+- Null Hypothesis: Recipes with the healthy tag have the same average rating as recipes without the healthy tag.
+- Alternate Hypothesis: Recipes with the healthy tag have a different average rating than recipes without the healthy tag.
+- Test Statistic: Absolute difference in mean average ratings between the healthy and non-healthy tagged recipe groups.
+- Significance level: alpha = 0.05
+
+I am conducting a permutation test because we have two samples and no known popultion in which to compare them to. As part of the test, group labels were shuffled (healthy tags vs. no healthy tags). Also, I am choosing a two-tailed test here by using the absolute difference as the test statistic, because I have no prior reason to suspect that average ratings differ between the two groups. In addition, my EDA showed that the average ratings distributions were pretty similar across the two groups.
+
+Similar to my earlier missingness tests, the permutation test was done with 1000 repetitions and the observed statistic came out to 0.04 pts, with a p-value of 0.0.
+
+<iframe
+  src="assets/difference-mean-average-rating-between-tags.html"
+  width="600"
+  height="400"
+  frameborder="0"
+></iframe>
+
+## Conclusion
+
+Since the p-value of 0.0 is less than 0.05, the null hypothesis was rejected at a significance level of 0.05. This suggests that recipes with the healthy tage do have a different average rating than recipes without the healthy tag. However, I must note something important to consider here. The actual observed difference of 0.04 is very small in reality when looking at our recipe rating scale of 1-5. This small difference is likely due to the large sample of close to 84,000 recipes, in which even a minute difference can become statisticall significant in permutation tests. In summary, despite this statistically significant result, this does not emphasize a large real-world difference in average_rating between recipes with the healthy tag and recipes without it.
+
+# Framing a Prediction Problem
 
