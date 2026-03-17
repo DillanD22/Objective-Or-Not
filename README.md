@@ -75,7 +75,7 @@ Additionally, I was interested in exploring the relationship between the number 
 <iframe
   src="assets/n-ingredients-vs-ncalories.html"
   width="800"
-  height="400"
+  height="800"
   frameborder="0"
 ></iframe>
 
@@ -124,7 +124,7 @@ Furthermore, I wanted to check the missingness of the `average_rating` column wi
   frameborder="0"
 ></iframe>
 
-I ran a permutation test with 1000 repetitions to arrive at a p-value of **0.029**. The observed difference was 117.34 minutes, as you can see in the graph above. Since the p-value of **0.029** is less than 0.05, the null is rejected at the 0.05 significance level, showing that the missingness of the `average_rating` column is likely dependent on the `minutes` column.
+I ran a permutation test with 1000 repetitions to arrive at a p-value of **0.03**. The observed difference was about 117.34 minutes, as you can see in the graph above. Since the p-value of **0.03** is less than 0.05, the null is rejected at the 0.05 significance level, showing that the missingness of the `average_rating` column is likely dependent on the `minutes` column.
 
 The same type of permutation test with 1000 repetitions was also done with the `sodium (PDV)` column. I wanted to explore a column in which the `average_rating` likely did not depend on it, and I figured that one nutritional value is not a likely determinant of missingness of average ratings.
 
@@ -142,7 +142,7 @@ The same type of permutation test with 1000 repetitions was also done with the `
   frameborder="0"
 ></iframe>
 
-The p-value was **0.863**, with an observed difference of 0.35 percent. Since the p-value of **0.863 is much greater than 0.05**, I failed to reject the null hypothesis at the 0.05 significance level. This suggests that the missingness of the `average_rating` column is likely not dependent on the `sodium (PDV)` column.
+The p-value was **0.884**, with an observed difference of about 0.35 percent. Since the p-value of **0.884 is much greater than 0.05**, I failed to reject the null hypothesis at the 0.05 significance level. This suggests that the missingness of the `average_rating` column is likely not dependent on the `sodium (PDV)` column.
 
 # Hypothesis Testing
 
@@ -155,7 +155,7 @@ Back to exploring the differences in the healthy-tagged group and the group with
 
 I am conducting a permutation test because we have two samples and no known popultion in which to compare them to. As part of the test, group labels were shuffled (healthy tags vs. no healthy tags). Also, I am choosing a two-tailed test here by using the absolute difference as the test statistic, because I have no prior reason to suspect that average ratings differ between the two groups. In addition, my EDA showed that the average ratings distributions were pretty similar across the two groups.
 
-Similar to my earlier missingness tests, the permutation test was done with 1000 repetitions and the observed statistic came out to 0.04 pts, with a p-value of **0.0**.
+Similar to my earlier missingness tests, the permutation test was done with 1000 repetitions and the observed statistic came out to about 0.04 pts, with a p-value of **0.0**.
 
 <iframe
   src="assets/difference-mean-average-rating-between-tags.html"
@@ -223,6 +223,6 @@ As part of my fairness analysis, I want to finish up my comparison between the g
   frameborder="0"
 ></iframe>
 
-Another permutation test was run to conduct this analysis, using 1000 repetitions and resulting in an observed RMSE difference of about **0.0268** and a p-value of **0.225**. Since the p-value of 0.225 is greater than 0.05, I fail to reject the null hypothesis at the 0.05 significance level. This suggests that the model performs fairly in terms of RMSE for both recipes with the healthy tag and recipes without it. A result like this makes sense given the fact that the model essentially predicts close to the mean for all recipes. 
+Another permutation test was run to conduct this analysis, using 1000 repetitions and resulting in an observed RMSE difference of about **0.0268** and a p-value of **0.203**. Since the p-value of 0.203 is greater than 0.05, I fail to reject the null hypothesis at the 0.05 significance level. This suggests that the model performs fairly in terms of RMSE for both recipes with the healthy tag and recipes without it. A result like this makes sense given the fact that the model essentially predicts close to the mean for all recipes. 
 
 This is both good and not as good, because it means the model doesn't discriminate, but also reflects the difficulty the model has with differentiating between the two types of recipes. In general, this is a symptom of trying to predict `average_rating` from the features availabe in the dataset, something that is difficult given how many subjective factors play into recipes ratings, as mentioned earlier.
