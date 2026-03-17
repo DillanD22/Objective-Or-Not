@@ -93,7 +93,7 @@ This chart provides a visual of that previous table (removed calories from the v
 
 <iframe
   src="assets/healthy-vs-non-healthy.html"
-  width="600"
+  width="650"
   height="400"
   frameborder="0"
 ></iframe>
@@ -110,63 +110,119 @@ I do believe that the `description` column in the dataset is MNAR (Missing Not A
 
 Furthermore, I wanted to check the missingness of the `average_rating` column with a column that may be able to explain its non-trivial missingness, the `minutes`. I chose to explore the dependence of the `average_rating` column on `minutes` because maybe longer recipes have been tried less by users, hence resulting in the fewer ratings and a lack of an average rating.
 
-- Null hypothesis: The missingness of average_rating does not depend on minutes
+- **Null hypothesis**: The missingness of average_rating does not depend on minutes
  (Distribution of minutes is same for missing and not missing)
-- Alternative hypothesis: The missingness of average_rating does depend on minutes
+- **Alternative hypothesis**: The missingness of average_rating does depend on minutes
  (Distribution of minutes is different for missing and not missing)
-- Significance level: alpha = 0.05 
-- Test statistic: The absolute difference of mean in mean minutes of the group with  missing ratings and the group without missing ratings.
+- **Significance level**: alpha = 0.05 
+- **Test statistic**: The absolute difference of mean in mean minutes of the group with  missing ratings and the group without missing ratings.
 
 <iframe
   src="assets/minutes-vs-average-rating-missingness.html"
-  width="600"
+  width="650"
   height="400"
   frameborder="0"
 ></iframe>
 
-I ran a permutation test with 1000 repetitions to arrive at a p-value of 0.029. The observed difference was 117.34 minutes, as you can see in the graph above. Since the p-value of 0.029 is less than 0.05, the null is rejected at the 0.05 significance level, showing that the missingness of the `average_rating` column is likely dependent on the `minutes` column.
+I ran a permutation test with 1000 repetitions to arrive at a p-value of **0.029**. The observed difference was 117.34 minutes, as you can see in the graph above. Since the p-value of **0.029** is less than 0.05, the null is rejected at the 0.05 significance level, showing that the missingness of the `average_rating` column is likely dependent on the `minutes` column.
 
 The same type of permutation test with 1000 repetitions was also done with the `sodium (PDV)` column. I wanted to explore a column in which the `average_rating` likely did not depend on it, and I figured that one nutritional value is not a likely determinant of missingness of average ratings.
 
-- Null hypothesis: The missingness of average_rating does not depend on sodium (PDV)
+- **Null hypothesis**: The missingness of average_rating does not depend on sodium (PDV)
  (Distribution of sodium (PDV) is same for missing and not missing)
-- Alternative hypothesis: The missingness of average_rating does depend on sodium (PDV)
+- **Alternative hypothesis**: The missingness of average_rating does depend on sodium (PDV)
  (Distribution of sodium (PDV) is different for missing and not missing)
-- Significance level: alpha = 0.05
-- Test statistic: The absolute difference of mean in mean sodium (PDV) of the group with  missing ratings and the group without missing ratings.
+- **Significance level**: alpha = 0.05
+- **Test statistic**: The absolute difference of mean in mean sodium (PDV) of the group with  missing ratings and the group without missing ratings.
 
 <iframe
   src="assets/sodium-vs-average-rating-missingness.html"
-  width="600"
+  width="650"
   height="400"
   frameborder="0"
 ></iframe>
 
-The p-value was 0.863, with an observed difference of 0.35 percent. Since the p-value of 0.863 is much greater than 0.05, I failed to reject the null hypothesis at the 0.05 significance level. This suggests that the missingness of the `average_rating` column is likely not dependent on the `sodium (PDV)` column.
+The p-value was **0.863**, with an observed difference of 0.35 percent. Since the p-value of **0.863 is much greater than 0.05**, I failed to reject the null hypothesis at the 0.05 significance level. This suggests that the missingness of the `average_rating` column is likely not dependent on the `sodium (PDV)` column.
 
 # Hypothesis Testing
 
 Back to exploring the differences in the healthy-tagged group and the group without healthy tags, I conducted a permutation test to discover if recipes with the healthy tag have the same average rating as recipes without the healthy tag. Essentially, do people rate recipes as higher because they are healthier or does that not really matter?
 
-- Null Hypothesis: Recipes with the healthy tag have the same average rating as recipes without the healthy tag.
-- Alternate Hypothesis: Recipes with the healthy tag have a different average rating than recipes without the healthy tag.
-- Test Statistic: Absolute difference in mean average ratings between the healthy and non-healthy tagged recipe groups.
-- Significance level: alpha = 0.05
+- **Null Hypothesis**: Recipes with the healthy tag have the same average rating as recipes without the healthy tag.
+- **Alternate Hypothesis**: Recipes with the healthy tag have a different average rating than recipes without the healthy tag.
+- **Test Statistic**: Absolute difference in mean average ratings between the healthy and non-healthy tagged recipe groups.
+- **Significance level**: alpha = 0.05
 
 I am conducting a permutation test because we have two samples and no known popultion in which to compare them to. As part of the test, group labels were shuffled (healthy tags vs. no healthy tags). Also, I am choosing a two-tailed test here by using the absolute difference as the test statistic, because I have no prior reason to suspect that average ratings differ between the two groups. In addition, my EDA showed that the average ratings distributions were pretty similar across the two groups.
 
-Similar to my earlier missingness tests, the permutation test was done with 1000 repetitions and the observed statistic came out to 0.04 pts, with a p-value of 0.0.
+Similar to my earlier missingness tests, the permutation test was done with 1000 repetitions and the observed statistic came out to 0.04 pts, with a p-value of **0.0**.
 
 <iframe
   src="assets/difference-mean-average-rating-between-tags.html"
-  width="600"
+  width="650"
   height="400"
   frameborder="0"
 ></iframe>
 
 ## Conclusion
 
-Since the p-value of 0.0 is less than 0.05, the null hypothesis was rejected at a significance level of 0.05. This suggests that recipes with the healthy tage do have a different average rating than recipes without the healthy tag. However, I must note something important to consider here. The actual observed difference of 0.04 is very small in reality when looking at our recipe rating scale of 1-5. This small difference is likely due to the large sample of close to 84,000 recipes, in which even a minute difference can become statisticall significant in permutation tests. In summary, despite this statistically significant result, this does not emphasize a large real-world difference in average_rating between recipes with the healthy tag and recipes without it.
+Since the p-value of **0.0** is less than 0.05, the null hypothesis was rejected at a significance level of 0.05. This suggests that recipes with the healthy tage do have a different average rating than recipes without the healthy tag. However, I must note something important to consider here. The actual observed difference of 0.04 is very small in reality when looking at our recipe rating scale of 1-5. This small difference is likely due to the large sample of close to 84,000 recipes, in which even a minute difference can become statisticall significant in permutation tests. In summary, despite this statistically significant result, this does not emphasize a large real-world difference in average_rating between recipes with the healthy tag and recipes without it.
 
 # Framing a Prediction Problem
 
+I chose to try and predict the average rating of a recipe using **regression**, as it is a continous variable, ranging from 1-5. I am choosing average rating because I am curious to see if it can be predicted using the objective nutritional and structural features that exist in the dataset. Being able to predict this is also intriguing to me because it would show me that myself and others may be able to evaluate the number and type ingredients we plan on using, as well as how long we plan on our recipe taking, to try and predict if it will have a high or low average rating (i.e. if it would be evaluated/received well by others).
+
+The metric I am using to evaluate my model is R^2, which measures how much of the variance in `average_rating` can be explained by the model's predictions. Since this is regression, I am also incorporating RMSE (root mean squared error) as a secondary metric to evaluate the average prediction error of my model in terms of rating scale points. 
+
+At the "time of prediction" all the nutritional and structural features I will be using are available in the recipes_avg_rating dataframe and would be available to anyone because they inherent in the identity of the recipe. For example, the calories of a recipe are clearly available at the time of prediction because they are baked in to the recipe.
+
+# Baseline Model
+
+For my baseline model, I will be using a multiple linear regression with three nutritional features: `calories`, `sugar (PDV)`, `protein (PDV)`. Each of the three features are quantitative, continous variables. `calories` is a column that contains the # of calories for each recipe. `sugar (PDV)` and `protein (PDV)` are columns that contain the precentage of daily value for sugar and protein in each recipe. Since these features are on two different scales, a StandardScaler was applied in the model pipeline to ensure that each feature was on the same scale before running the model.
+
+The model ended up with an R^2 of about **-0.000095** and RMSE of about **0.6359**, which shows that the model is very weak and not very good. This does make sense, because it does kind of make sense that just 3 of the features of the nutritional makeup of a recipe don't alone do much at all to predict average rating. This does also show that users don't usually consider calories, sugar, or protein very much when evaluating a recipe.
+
+# Final Model
+
+For my final model, I added all of the nutritional features and added structural features: `calories`, `sugar (PDV)`, `protein (PDV)`, `total_fat (PDV)`, `sodium (PDV)`, `saturated_fat (PDV)`, `carbohydrates (PDV)`, `minutes`, `n_steps`, `n_ingredients`, and `is_healthy`. 
+
+`calories`, `sugar (PDV)`, `protein (PDV)`, `total_fat (PDV)`, `sodium (PDV)`, `saturated_fat (PDV)`, `carbohydrates (PDV)`
+
+- I chose to incorporate all of the nutritional features into my final model because I figured that the average rating of a recipe is partially reflective of its taste, making the nutrional makeup of recipe influential in its taste. For example, maybe recipes with more sodium are received better by users because they taste salty, hence having a higher average rating. Users may also value healthy recipes that combine low sodium with high protein because they fit their diet. Adding more of the nutritional features may improve the model's performance because they explain more of the complete taste of each recipe. `calories` was log-transformed using FunctionTransformer to account for the right-skew seen in the EDA plot. In addition, each of the nutritional features besides `calories` and plus `n_ingredients` were standardized using StandardScaler because n_ingredients is on a different scale from the nutritional (PDV) features.
+
+`minutes`, `n_steps`, `n_ingredients`
+
+- I chose to add three structural features to my final model, because, in addition to taste, users may value recipes that don't take as long or that have fewer and ingredients and steps. These may improve my model's performance because if users do value efficient recipes, than they may rate them higher, allowing for these structural features to be more predictive of a recipe's average rating. `minutes` was log-transformed using FunctionTransformer to account for the right-skew seen in the EDA plot. `n_steps` was transformaed using QuantileTransfomer to account for its skew and the fact that it was a discrete variable. 
+
+`is_healthy`
+
+- This was one of the aspects of this dataset that I explored earlier, and I chose to include it here because there was a statistically significant difference in average ratings between healthy tagged recipes and recipes without the tag, albeit small. Maybe the type of recipe influences how users rate it, possibly rating a recipe as higher because it is healthier or lower because healthy recipes don't taste as good. I converted this binary feature to an int (0/1) encoding, which will allow for my final model to differentiate between the two types. 
+
+I used **Ridge regression** as a more powerful upgrade to multiple linear regression for my final model. I chose it because it improves upon the baseline model by better accounting for multicollinearity and reducing overfitting. It does this by using a hyperparameter **alpha**, which controls the regularization strength in the model, essentially working to find the right balance between not overfitting and trying to fit the training as best as possible. Alpha is the most important hyperparameter to tune and it is the one I chose to tune using GridSearch CV, which found that the optimal alpha to choose was **100** out of 5 options: 0.01, 0.1, 1, 10. The final model resulted in an R^2 of about **0.001** and an RMSE of about **0.6354**, which is marked improvement in R^2 from the baseline model. That being said, the R^2 value is still not significant and the RMSE basically didn't change,  highlighting the reality that many of these objective features do not truly capture the factors that influence and predict `average_rating`. 
+
+This is a surprising and interesting result to me, because this shows that people likely rate recipes more subjectively than I had initially believed. For example, I believed that taste, a subjective feeling, was captured by some of the nutritional features, but it likely was not. Maybe this also further suggests that people don't rate recipes based on how healthy they think they will be or how nutritious they are. Maybe they instead rate them based on how easy they are to make or how presentable they are. The healthiness of a recipe is not as predictive of its average rating, and that is something that is noteworthy. It does also make sense because we don't often view healthy recipes as super tasty, and when we are looking for good recipes, we often want something delicious, but that may come at the cost of being healthy (such as desserts for example). 
+
+**In summary, the average rating of a recipe was more challenging to predict due to the subjective factors that influence it, factors that are not effectively captured by the objective features and data within the dataset. Users likely value taste, ease of completion, presentation, and others factors more highly than whether a recipe hits certain nutritional benchmarks or appears to be healthy.**
+
+# Fairness Analysis
+
+Clearly state your choice of Group X and Group Y, your evaluation metric, your null and alternative hypotheses, your choice of test statistic and significance level, the resulting 
+p-value, and your conclusion.
+
+As part of my fairness analysis, I want to finish up my comparison between the group with the `is_healthy` tag and the group without. Since my model is a regression model, I will be using **RMSE** (root mean squared error) as my evaluation metric.
+
+- **Null hypothesis**: The model is fair. Its RMSE for healthy-tagged recipes and recipes without the healthy tag are roughly the same and any differences are due to random chance.
+- **Alternate Hypothesis**: The model is unfair. Its RMSE for healthy-tagged recipes and recipes without the healthy tag are different.
+- **Test Statistic**: Absolute difference in RMSE between the healthy and non-healthy tagged recipe groups.
+- **Significance level**: alpha = 0.05
+
+<iframe
+  src="assets/difference-rmse-between-tags.html"
+  width="650"
+  height="400"
+  frameborder="0"
+></iframe>
+
+Another permutation test was run to conduct this analysis, using 1000 repetitions and resulting in an observed RMSE difference of about **0.0268** and a p-value of **0.225**. Since the p-value of 0.225 is greater than 0.05, I fail to reject the null hypothesis at the 0.05 significance level. This suggests that the model performs fairly in terms of RMSE for both recipes with the healthy tag and recipes without it. A result like this makes sense given the fact that the model essentially predicts close to the mean for all recipes. 
+
+This is both good and not as good, because it means the model doesn't discriminate, but also reflects the difficulty the model has with differentiating between the two types of recipes. In general, this is a symptom of trying to predict `average_rating` from the features availabe in the dataset, something that is difficult given how many subjective factors play into recipes ratings, as mentioned earlier.
