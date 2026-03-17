@@ -73,7 +73,7 @@ I wanted to explore the distribution of average_ratings within the dataframe to 
 Additionally, I was interested in exploring the relationship between the number of ingredients vs the number of calories. Maybe certain recipes have only a small subset of ingredients that lead to a higher calorie total and maybe other healthy recipes use several ingredients that each have lower calorie counts. However, I assumed there would be a positive relationship between the two, as more ingredients typically tend to add up to more calories and indeed there was. The bright linear area in the graph highlights the positive correlation between the two features.
 
 <iframe
-  src="assets/n-ingredients-vs-calories.html"
+  src="assets/n-ingredients-vs-ncalories.html"
   width="800"
   height="400"
   frameborder="0"
