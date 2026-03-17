@@ -63,7 +63,7 @@ I wanted to explore the distribution of average_ratings within the dataframe to 
 <iframe
   src="assets/avg-rating-distribution.html"
   width="700"
-  height="450"
+  height="425"
   frameborder="0"
 ></iframe>
 
@@ -94,7 +94,7 @@ This chart provides a visual of that previous table (I removed calories from the
 <iframe
   src="assets/healthy-vs-non-healthy.html"
   width="650"
-  height="450"
+  height="425"
   frameborder="0"
 ></iframe>
 
@@ -120,7 +120,7 @@ Furthermore, I wanted to check the missingness of the `average_rating` column wi
 <iframe
   src="assets/minutes-vs-average-rating-missingness.html"
   width="650"
-  height="450"
+  height="425"
   frameborder="0"
 ></iframe>
 
@@ -138,7 +138,7 @@ The same type of permutation test with 1000 repetitions was also done with the `
 <iframe
   src="assets/sodium-vs-average-rating-missingness.html"
   width="650"
-  height="450"
+  height="425"
   frameborder="0"
 ></iframe>
 
@@ -160,7 +160,7 @@ Similar to my earlier missingness tests, the permutation test was done with 1000
 <iframe
   src="assets/difference-mean-average-rating-between-tags.html"
   width="650"
-  height="450"
+  height="425"
   frameborder="0"
 ></iframe>
 
@@ -220,7 +220,7 @@ As part of my fairness analysis, I wanted to finish up my comparison between the
 <iframe
   src="assets/difference-rmse-between-tags.html"
   width="650"
-  height="450"
+  height="425"
   frameborder="0"
 ></iframe>
 
